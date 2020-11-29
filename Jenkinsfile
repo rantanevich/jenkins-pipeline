@@ -8,6 +8,8 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
+                sh 'export'
+                sh 'ls -la'
                 echo 'prepares something...'
             }
         }
