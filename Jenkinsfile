@@ -18,29 +18,36 @@ pipeline {
                 echo 'tests something...'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'builds something...'
+        stage('Production') {
+            when {
+                branch 'main'
             }
-        }
-        stage('Push') {
-            steps {
-                echo 'pushes something...'
-            }
-        }
-        stage('Deploy to stage') {
-            steps {
-                echo 'deploys something to stage...'
-            }
-        }
-        stage('Approval') {
-            steps {
-                echo 'approval something...'
-            }
-        }
-        stage('Deploy to production') {
-            steps {
-                echo 'deploys something to production...'
+            stages {
+                stage('Build') {
+                    steps {
+                        echo 'builds something...'
+                    }
+                }
+                stage('Push') {
+                    steps {
+                        echo 'pushes something...'
+                    }
+                }
+                stage('Deploy to stage') {
+                    steps {
+                        echo 'deploys something to stage...'
+                    }
+                }
+                stage('Approval') {
+                    steps {
+                        echo 'approval something...'
+                    }
+                }
+                stage('Deploy to production') {
+                    steps {
+                        echo 'deploys something to production...'
+                    }
+                }
             }
         }
     }
