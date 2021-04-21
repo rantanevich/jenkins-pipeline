@@ -18,6 +18,11 @@ pipeline {
                 echo 'tests something...'
             }
         }
+        stage('Build') {
+            steps {
+                echo 'webhook has been sent'
+            }
+        }
         stage('Production') {
             when {
                 branch 'main'
