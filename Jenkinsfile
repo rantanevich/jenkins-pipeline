@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker run -it --entrypoint "" alpine/helm:3.5.4 helm version' 
+                sh 'docker run -it --rm alpine/helm:3.5.4 version' 
             }
         }
         stage('Production') {
