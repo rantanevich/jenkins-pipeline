@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                sh 'export'
+                sh 'printenv'
                 sh 'ls -la'
                 echo 'prepares something...'
             }
