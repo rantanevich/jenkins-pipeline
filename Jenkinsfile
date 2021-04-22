@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'printenv'
                 sh 'ls -la'
-                echo 'prepares something...'
+                echo 'hello from ${GIT_BRANCH} branch'
             }
         }
         stage('Test') {
