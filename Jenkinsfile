@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'alpine:3.13.2'
+        }
+    }
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -9,13 +13,19 @@ pipeline {
         stage('Prepare') {
             steps {
                 sh 'printenv'
-                sh 'ls -la'
-                echo 'hello from ${GIT_BRANCH} branch'
+                sh 'ls -lha'
+                echo "hello from ${GIT_BRANCH} branch"
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                    image 'alpine/helm:3.5.4'
+                    args '--entrypoint=/bin/sh'
+                }
+            }
             steps {
-                sh 'docker run --rm alpine/helm:3.5.4 version' 
+                sh 'helm version'
             }
         }
         stage('Production') {
