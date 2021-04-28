@@ -9,6 +9,7 @@ pipeline {
         stage('Prepare') {
             steps {
                 sh 'ls -la'
+                sh 'printenv'
                 echo 'prepares something...'
             }
         }
